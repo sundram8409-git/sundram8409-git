@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Graphic Designer Portfolio</title>
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+    background: #f9fafc;
+    color: #222;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  /* Header */
+  header {
+    background: #1e1e2f;
+    color: #fff;
+    padding: 20px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-weight: 900;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    color: #f22;
+    cursor: default;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  nav ul li a {
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #f22;
+  }
+  /* Hero Section */
+  .hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #f22, #ff6347);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    color: #fff;
+    padding-top: 100px; /* for fixed header */
+  }
+  .hero-content {
+    max-width: 700px;
+  }
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 900;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  }
+  .hero p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+  .btn-primary {
+    background-color: #fff;
+    color: #f22;
+    font-weight: 700;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 25px rgba(255, 99, 71, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .btn-primary:hover {
+    background-color: #f22;
+    color: #fff;
+  }
+  /* Sections */
+  section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  h2.section-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    font-weight: 900;
+    color: #1e1e2f;
+  }
+  hr.section-divider {
+    width: 60px;
+    height: 4px;
+    background: #f22;
+    border: none;
+    margin: 0 auto 50px auto;
+    border-radius: 10px;
+  }
+  /* About */
+  .about {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    text-align: center;
+  }
+  /* Portfolio */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 30px;
+  }
+  .portfolio-item {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.2);
+  }
+  .portfolio-item img {
+    border-bottom: 4px solid #f22;
+    border-radius: 15px 15px 0 0;
+  }
+  .portfolio-item-info {
+    padding: 15px 20px;
+  }
+  .portfolio-item-info h3 {
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1e1e2f;
+  }
+  .portfolio-item-info p {
+    color: #666;
+    font-size: 0.95rem;
+  }
+  /* Skills */
+  .skills-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  .skill {
+    background: #fff;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #f22;
+    font-size: 1.1rem;
+    cursor: default;
+    transition: box-shadow 0.3s ease;
+  }
+  .skill:hover {
+    box-shadow: 0 10px 30px rgba(242,34,34,0.4);
+  }
+  /* Contact */
+  .contact {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  input, textarea {
+    font-size: 1rem;
+    padding: 15px 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #f22;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  .btn-submit {
+    background-color: #f22;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .btn-submit:hover {
+    background-color: #c11a1a;
+  }
+  /* Footer */
+  footer {
+    padding: 25px 20px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #555;
+    background: #1e1e2f;
+    color: #aaa;
+    margin-top: 60px;
+  }
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    nav ul {
+      gap: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">SUNDRAM CREATIVE</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content" role="banner">
+    <h1>Welcome to Sundram Creative.</h1>
+    <p> where every pixel has a purpose to elevate your brand.</p>
+    <a href="#portfolio" class="btn-primary" role="button">See My Work</a>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">About Me</h2>
+  <hr class="section-divider" />
+  <p class="about">
+    Hello!Hi, I'm Sundram -- the creative mind behind Sundram Creative. I'm a passionate graphic designer with a love for turning ideas into visually compelling designs. Whether it's a bold brand identity, eye-catching social media graphics, or sleek digital artwork, I focus on creating designs that not only look great but also tell a story.
+
+With a strong understanding of color, composition, and modern design trends, I aim to help individuals and businesses stand out in a visually crowded world. Every project is an opportunity to bring creativity and purpose together -- and that's what drives me every day.
+
+Let's create something awesome!
+  </p>
+</section>
+
+<section id="portfolio">
+  <h2 class="section-title">Portfolio</h2>
+  <hr class="section-divider" />
+  <div class="portfolio-grid" aria-label="Portfolio gallery">
+    <article class="portfolio-item" tabindex="0" aria-describedby="proj1-desc">
+      <img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/364444816/original/d2e7d30cb8770d0856303022fcb9a2f469f92d74/do-any-graphic-design-logo-flyer-photoshop-editing-and-vector-art.jpg" alt="Creative poster design with abstract shapes and bold colors" />
+      <div class="portfolio-item-info">
+        <h3>Abstract Poster</h3>
+        <p id="proj1-desc">A vibrant abstract poster designed for a music festival branding campaign.</p>
+      </div>
+    </article>
+    <article class="portfolio-item" tabindex="0" aria-describedby="proj2-desc">
+      <img src="https://th.bing.com/th/id/OIP.eZNr5yE5UgfxS58bB_1FGQHaE8?rs=1&pid=ImgDetMain" alt="Modern business card design with clean lines" />
+      <div class="portfolio-item-info">
+        <h3>Business Card</h3>
+        <p id="proj2-desc">Sleek and professional business card design emphasizing modern minimalism.</p>
+      </div>
+    </article>
+    <article class="portfolio-item" tabindex="0" aria-describedby="proj3-desc">
+      <img src="https://www.seoclerk.com/pics/000/957/729/07867e352938f152c819d5da8b915254.jpg" alt="Creative logo design with gradient colors and geometric shapes" />
+      <div class="portfolio-item-info">
+        <h3>Logo Design</h3>
+        <p id="proj3-desc">Custom logo combining geometric precision with a colorful gradient palette.</p>
+      </div>
+    </article>
+    <article class="portfolio-item" tabindex="0" aria-describedby="proj4-desc">
+      <img src="https://th.bing.com/th/id/OIP.tC-xhVNvhaL5eCZj4aBb1gHaE8?rs=1&pid=ImgDetMain" alt="Website homepage design on a laptop mockup" />
+      <div class="portfolio-item-info">
+        <h3>Video Editing</h3>
+        <p id="proj4-desc">User interface design mockup for a modern creative video.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="section-title">Skills</h2>
+  <hr class="section-divider" />
+  <div class="skills-list" role="list">
+    <div class="skill" role="listitem" aria-label="Adobe Photoshop">Photoshop</div>
+    <div class="skill" role="listitem" aria-label="Adobe Illustrator">Illustrator</div>
+    <div class="skill" role="listitem" aria-label="Figma design tool">Figma</div>
+    <div class="skill" role="listitem" aria-label="Adobe After Effects">After Effects</div>
+    <div class="skill" role="listitem" aria-label="Branding and Visual Identity">Branding</div>
+    <div class="skill" role="listitem" aria-label="Print and Digital Design">Print Design</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Contact Me</h2>
+  <hr class="section-divider" />
+  <div class="contact">
+    <form id="contactForm" aria-label="Contact form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="example@gmail.com" required autocomplete="email" />
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+      <button type="submit" class="btn-submit" aria-label="Send message">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Sundram Graphic Designer. All rights reserved.
+</footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for reaching out! I will get back to you soon.');
+    form.reset();
+  });
+</script>
+</body>
+</html>
